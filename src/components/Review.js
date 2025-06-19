@@ -40,46 +40,47 @@ const review = [
 ];
 
 const Review = () => {
-    const [index, setIndex] = useState(0);
-    const { id, name, job, image, text} = review[index];
+  const [index, setIndex] = useState(0);
+  const { id, name, job, image, text } = review[index];
 
-    const checkIndex = (idx) => {
-        if(idx>=review.length) return 0;
-        if(idx<0) return review.length - 1;
-        return idx;
-    }
+  const checkIndex = (id) => {
+    if (id >= review.length) return 0;
+    if (id < 0) return review.length - 1;
+    return id;
+  }
 
-    const prevReview = () => {
-        setIndex((prev) => checkIndex(prev - 1));
-    }
+  const prevReview = () => {
+    setIndex((prev) => checkIndex(prev - 1));
+  }
 
-    const nextReview = () => {
-        setIndex((prev) => checkIndex(prev + 1));
-    }
+  const nextReview = () => {
+    setIndex((prev) => checkIndex(prev + 1));
+  }
 
-    const randomReview = () => {
-        let rand = Math.floor(Math.random() * review.length);
-        while(rand === index) {
-            rand = Math.floor(Math.random() * review.length);
-        }
-        setIndex(rand);
-    }
+  const randomReview = () => {
+    let rand = Math.floor(Math.random() * review.length);
+    // while (rand === index) {
+    //   rand = Math.floor(Math.random() * review.length);
+    // }
+    setIndex(rand);
+  }
 
-    return (
-        <article className='review'>
-            <img src={image} alt={name} className='person-img' />
-            <h4 className='author' id='{`author-${id}`}'>{name}</h4>
-            <p className='job'>{job}</p>
-            <p className='info'>{text}</p>
+  return (
 
-            <div className='button-container'>
-                <button className='prev-btn' onClick={prevReview}>Prev</button>
-                <button className='next-btn' onClick={prevReview}>Next</button>
-            
-            <button className='random-btn' onClick={randomReview}>Surprise me</button>
-            </div>
-        </article>
-    )
+    <article className='review'>
+      <img src={image} alt={name} className='person-img' />
+      <h4 className='author' id='{`author-${id}`}'>{name}</h4>
+      <p className='job'>{job}</p>
+      <p className='info'>{text}</p>
+
+      <div className='button-container'>
+        <button className='prev-btn' onClick={prevReview}>Prev</button>
+        <button className='next-btn' onClick={nextReview}>Next</button>
+
+        <button className='random-btn' onClick={randomReview}>surprise me</button>
+      </div>
+    </article>
+  )
 }
 
 export default Review;
